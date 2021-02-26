@@ -1,0 +1,46 @@
+@model dynamic
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>title</h2>
+
+<button onclick="LoopDefaultTenTimes();">Test Default Session</button>
+<button onclick="LoopDisableTenTimes();">Test Disable Session</button>
+<label id="result" value="test" ></label>
+<script>
+
+
+function LoopDefaultTenTimes()
+{
+    for (let i = 0; i < 10; i++) {
+        CallSessionDefault();
+    }
+}
+
+function LoopDisableTenTimes()
+{
+    for (let i = 0; i < 10; i++) {
+        CallSessionDisable();
+    }
+}
+
+
+
+function CallSessionDefault()
+{
+    $.get("/api/SessionDefault", function(html) {
+        console.log(html);
+    });
+}
+
+function CallSessionDisable()
+{
+    
+    $.get("/api/SessionDisable", function(html) {
+        console.log(html);
+    });
+    
+}
+</script>
