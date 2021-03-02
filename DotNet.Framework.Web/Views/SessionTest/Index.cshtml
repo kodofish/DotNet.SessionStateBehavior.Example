@@ -8,9 +8,16 @@
 
 <button onclick="LoopDefaultTenTimes();">Test Default Session</button>
 <button onclick="LoopDisableTenTimes();">Test Disable Session</button>
+<button onclick="LoopReadOnlyTenTimes();">Test ReadOnly Session</button>
 <label id="result" value="test" ></label>
 <script>
 
+function LoopReadOnlyTenTimes(){
+    
+    for (let i = 0; i < 10; i++) {
+        CallSessionDefault();
+    }
+}
 
 function LoopDefaultTenTimes()
 {
@@ -27,6 +34,12 @@ function LoopDisableTenTimes()
 }
 
 
+function CallSessionReadOnly()
+{
+    $.get("/SessionReadOnly", function(html) {
+        console.log(html);
+    });
+}
 
 function CallSessionDefault()
 {
