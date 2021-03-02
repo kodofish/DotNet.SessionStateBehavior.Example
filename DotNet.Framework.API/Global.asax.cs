@@ -13,8 +13,11 @@ namespace DotNet.Framework.API
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            
-            HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Disabled);
+        }
+        
+        protected void Application_PostAuthorizeRequest()
+        {
+            HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
         }
     }
 }
