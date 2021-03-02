@@ -1,11 +1,14 @@
+using System.Threading;
 using System.Web.Mvc;
 using System.Web.SessionState;
+using log4net;
 
 namespace DotNet.Framework.Web.Controllers
 {
     [SessionState(SessionStateBehavior.Default)]
     public class SessionDefaultController : Controller
     {
+        private ILog Logger => LogManager.GetLogger(this.GetType());
         // GET
         public ActionResult Index()
         {
@@ -14,6 +17,9 @@ namespace DotNet.Framework.Web.Controllers
             else
                 Session["count"] = int.Parse(Session["count"].ToString()) + 1;
             
+            Logger.Info("Start");
+            Thread.Sleep(1000);
+            Logger.Info("End");
             return View();
         }
     }

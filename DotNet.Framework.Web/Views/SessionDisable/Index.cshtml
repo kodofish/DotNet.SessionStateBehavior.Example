@@ -5,4 +5,4 @@
 }
 
 <h2>Session State Behavior Disable</h2>
-@Session["count"]
+@(Session == null ? "Session is null" : Session["count"])
